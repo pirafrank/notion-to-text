@@ -1,0 +1,17 @@
+{
+  "name": "notion-to-txt",
+  "description": "render publicly shared notion web pages as raw text",
+  "version": "0.1.0",
+  "private": true,
+  "author": "pirafrank",
+  "scripts": {
+    "start": "node ./src/app"
+  },
+  "dependencies": {
+    "puppeteer": "^11.0.0",
+    "axios": "^0.21.1",
+    "cross-env": "^7.0.3",
+    "dotenv": "^8.6.0"
+  },
+  "devDependencies": {}
+}
