@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer');
 const html2text = require('html-to-text');
 const fs = require('fs');
+const fx = require('./functions.js');
 
 async function run () {
   const browser = await puppeteer.launch({headless: true});
@@ -33,15 +34,19 @@ async function run () {
   });
   //console.log(pageContent)
 
+  // covert downloaded html to text
   const text = html2text.convert(pageContent, {
     wordwrap: 80,
+    formatters: {
+      formatLinks: fx.formatAnchor,
+    },
     selectors: [
       { selector: 'img', format: 'skip' },
-      { selector: 'a', options: { hideLinkHrefIfSameAsText: true, noAnchorUrl: true } }
+      { selector: 'a', format: 'formatLinks', options: { hideLinkHrefIfSameAsText: true, noAnchorUrl: true } }
     ],
   });
 
-  // delete file if it exists
+  // delete output file if it exists
   if(fs.existsSync('output.txt'))
     fs.unlinkSync("output.txt")
 
