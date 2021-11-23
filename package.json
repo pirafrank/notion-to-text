@@ -5,12 +5,15 @@
   "private": true,
   "author": "pirafrank",
   "scripts": {
-    "app": "node ./src/app"
+    "cli": "node ./src/cli",
+    "server": "node ./src/server",
+    "debug": "DEBUG_ENABLED=true node ./src/server"
   },
   "dependencies": {
     "axios": "^0.21.1",
     "cross-env": "^7.0.3",
     "dotenv": "^8.6.0",
+    "fastify": "^3.24.0",
     "he": "^1.2.0",
     "html-to-text": "^8.1.0",
     "puppeteer": "^11.0.0"
