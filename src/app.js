@@ -1,14 +1,6 @@
 const puppeteer = require('puppeteer');
-
-let url = process.argv[2];
-if (!url) {
-    throw new Error("Please provide a URL as the first argument");
-}
-
-if (!url.includes('http')){
-  console.log("url misses protocol, going with HTTPS");
-  url = "https://" + url;
-}
+const html2text = require('html-to-text');
+const fs = require('fs');
 
 async function run () {
   const browser = await puppeteer.launch({headless: true});
@@ -39,11 +31,46 @@ async function run () {
   const pageContent = await page.evaluate(() => {
     return document.querySelector('.notion-page-content').innerHTML;
   });
-  console.log(pageContent)
+  //console.log(pageContent)
+
+  const text = html2text.convert(pageContent, {
+    wordwrap: 80,
+    selectors: [
+      { selector: 'img', format: 'skip' },
+      { selector: 'a', options: { hideLinkHrefIfSameAsText: true, noAnchorUrl: true } }
+    ],
+  });
+
+  // delete file if it exists
+  if(fs.existsSync('output.txt'))
+    fs.unlinkSync("output.txt")
+
+  // write converted output to file
+  fs.writeFileSync(
+    'output.txt',
+    text,
+    ((err) => {
+      if(err) return console.error(err);
+      console.log("Output written to file")
+    })
+  )
 
   if (browser !== undefined) browser.close();
 }
 
-run()
-  .then(r => { console.log("Done")})
-  .catch(e => console.log("Error", e))
+let url = process.argv[2];
+if (!url) {
+    throw new Error("Please provide a URL as the first argument");
+}
+
+function main() {
+  if (!url.includes('http')){
+    console.log("url misses protocol, going with HTTPS");
+    url = "https://" + url;
+  }
+  run()
+    .then(r => { console.log("Done")})
+    .catch(e => console.log("Error", e))
+}
+
+main()
