@@ -1,0 +1,29 @@
+service: screenshot-lambda
+
+provider:
+    name: aws
+    runtime: nodejs14.x
+    memorySize: 2536
+    timeout: 180
+
+functions:
+    screenshot-function:
+        handler: src/aws.handler
+        environment:
+            DEBUG: 0
+
+package:
+    exclude:
+        - node_modules/puppeteer/.local-chromium/**
+
+plugins:
+    - serverless-plugin-chrome
+
+custom:
+    chrome:
+        flags:
+            - --window-size=1920,1080 # Letter size
+            - --hide-scrollbars
+            #- --ignore-certificate-errors
+        functions:
+            - screenshot-function

@@ -30,6 +30,22 @@ Notion page URL|API call|Response type
 
 In case of error, you'll always get an `application/json` response.
 
+## AWS Lambda
+
+```sh
+npm i --only=production
+
+zip -r function.zip .
+
+aws lambda create-function \
+--function-name notion-to-text \
+--region eu-west-1 \
+--zip-file fileb://function.zip \
+--role arn:aws:iam::447786545826:role/lambda-role-001 \
+--runtime nodejs14.x \
+--handler aws.handler
+```
+
 ## License
 
 MIT
