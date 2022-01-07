@@ -8,7 +8,8 @@
     "cli": "node ./src/cli",
     "server": "node ./src/server",
     "debug": "DEBUG_ENABLED=true node ./src/server",
-    "pack": "rm -f function.zip; zip -r function.zip ."
+    "clean": "rm -rf node_modules",
+    "pack": "rm -f function.zip; zip -r function.zip . ; ls -lah function.zip"
   },
   "dependencies": {
     "axios": "^0.21.1",
