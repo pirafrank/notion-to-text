@@ -1,12 +1,10 @@
-const puppeteer = require('puppeteer');
 const html2text = require('html-to-text');
-const fx = require('./functions.js');
-const log = require('./logger.js');
+const fx = require('./src/functions.js');
+const log = require('./src/logger.js');
 
-async function getTextContent(url) {
+async function getPageContent(url, browser) {
   log.info("URL is", url);
 
-  const browser = await puppeteer.launch({headless: true});
   const page = await browser.newPage();
 
   await page.setViewport({ width: 1920, height: 1080});
@@ -52,6 +50,6 @@ function transformUrl(url){
 }
 
 module.exports = {
-  getTextContent: getTextContent,
+  getPageContent: getPageContent,
   transformUrl: transformUrl,
 }

@@ -1,6 +1,7 @@
-const n2t = require('./notionToText.js')
-const log = require('./logger.js')
+const n2t = require('notion-to-text-core')
 const fs = require('fs');
+const puppeteer = require('puppeteer');
+const log = require('../core/src/logger.js')
 
 function writeToFile(filename, data){
   // delete output file if it exists
@@ -17,6 +18,11 @@ function writeToFile(filename, data){
   )
 }
 
+async function run(url) {
+  const browser = await puppeteer.launch({headless: true});
+  return n2t.getPageContent(url, browser)
+}
+
 function main() {
   let url = process.argv[2];
   if (!url) {
@@ -26,13 +32,9 @@ function main() {
     log.error("URL misses protocol, going with HTTPS");
     url = "https://" + url;
   }
-  n2t.getTextContent(url)
-    .then(r => {
-      writeToFile("output.txt", r.text)
-    })
-    .then(r => {
-      log.info("Done")
-    })
+
+  run(url)
+    .then(r => log.info(r.text))
     .catch(e => log.error("Error", e))
 }
 

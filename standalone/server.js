@@ -1,8 +1,8 @@
-const n2t = require('./notionToText.js')
-const log = require('./logger')
+const n2t = require('notion-to-text-core')
 const fastify = require('fastify')({
   logger: true
 })
+const log = require('./logger')
 
 fastify.get('/:type/*', (request, reply) => {
   log.debug(request.url)
@@ -17,7 +17,7 @@ fastify.get('/:type/*', (request, reply) => {
   log.debug("Transformed url is: " + url)
 
   reply.type("application/json")  // default to json
-  n2t.getTextContent(url)
+  n2t.getPageContent(url)
     .then(response => {
       reply.code(200)
       if(type === 'text'){
@@ -39,5 +39,3 @@ fastify.listen(3000, (err, address) => {
   if (err) throw err
   log.info("Server is now listening on " + address);
 })
-
-// https://pirafrank.notion.site/My-toolbelt-c3e17a2462d64b549e3ec7009e6f3071

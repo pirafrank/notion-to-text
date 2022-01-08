@@ -1,0 +1,11 @@
+node_modules
+*.html
+*.png
+output*.txt
+*.zip
+
+# serverless stuff
+admin.env
+.env
+_meta
+.serverless

@@ -5,13 +5,28 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "aws-sam",
+      "request": "direct-invoke",
+      "name": "lambda:index.handler (nodejs14.x)",
+      "invokeTarget": {
+        "target": "code",
+        "projectRoot": "${workspaceFolder}/lambda",
+        "lambdaHandler": "index.handler"
+      },
+      "lambda": {
+        "runtime": "nodejs14.x",
+        "payload": {},
+        "environmentVariables": {}
+      }
+    },
+    {
       "type": "pwa-node",
       "request": "launch",
       "name": "Run AWS",
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}/src/aws.js"
+      "program": "${workspaceFolder}/lambda/index.js"
     },
     {
       "type": "pwa-node",
@@ -20,8 +35,10 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}/src/cli.js",
-      "args": [ "https://pirafrank.notion.site" ]
+      "program": "${workspaceFolder}/standalone/cli.js",
+      "args": [
+        "https://pirafrank.notion.site"
+      ]
     },
     {
       "type": "pwa-node",
@@ -30,7 +47,7 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}/src/server.js"
+      "program": "${workspaceFolder}/standalone/server.js"
     }
   ]
 }

@@ -1,0 +1,16 @@
+{
+  "name": "notion-to-text-core",
+  "description": "Core library for notion-to-text",
+  "version": "0.1.0",
+  "private": false,
+  "author": "pirafrank",
+  "url": "https://fpira.com/",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rm -rf node_modules"
+  },
+  "dependencies": {
+    "he": "^1.2.0",
+    "html-to-text": "^8.1.0"
+  }
+}

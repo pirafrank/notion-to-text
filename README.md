@@ -2,11 +2,14 @@
 
 A simple way to get content of notion.site pages in plain text (e.g. for use with `curl`, etc.).
 
-## Run it locally
+## Standalone
+
+Standalone version can be executed as CLI program or as server.
 
 ### Command-line
 
 ```sh
+cd standalone
 # npm run cli [a *.notion.site url]
 npm run cli "https://pirafrank.notion.site"
 ```
@@ -16,6 +19,7 @@ npm run cli "https://pirafrank.notion.site"
 Start the server
 
 ```sh
+cd standalone
 npm run server
 ```
 
@@ -33,6 +37,8 @@ In case of error, you'll always get an `application/json` response.
 ## AWS Lambda
 
 ```sh
+cd lambda
+
 npm i --only=production
 
 zip -r function.zip .

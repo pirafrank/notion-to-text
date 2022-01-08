@@ -6,7 +6,11 @@
 			"script": "pack",
 			"problemMatcher": [],
 			"label": "npm: pack",
-			"detail": "rm -f function.zip; zip -r function.zip ."
+			"detail": "rm -f function.zip; zip -r function.zip .",
+      "options": {
+        "cwd": "${workspaceFolder}/lambda"
+      },
+      "path": "${workspaceFolder}/lambda"
 		}
 	]
 }

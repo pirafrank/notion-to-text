@@ -1,8 +1,3 @@
-node_modules
-*.html
-*.png
-output*.txt
-*.zip
 
 # vscode
 .vscode/*
