@@ -6,6 +6,10 @@
   "author": "pirafrank",
   "url": "https://fpira.com/",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pirafrank/notion-to-text.git"
+  },
   "scripts": {
     "clean": "rm -rf node_modules",
     "pack": "rm -f function.zip; zip -r function.zip . ; ls -lah function.zip"

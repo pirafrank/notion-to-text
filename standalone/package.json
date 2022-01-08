@@ -6,6 +6,10 @@
   "author": "pirafrank",
   "url": "https://fpira.com/",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pirafrank/notion-to-text.git"
+  },
   "scripts": {
     "cli": "node ./cli",
     "server": "node ./server",
