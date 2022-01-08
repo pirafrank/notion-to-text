@@ -1,8 +1,9 @@
 const n2t = require('notion-to-text-core')
+const puppeteer = require('puppeteer');
 const fastify = require('fastify')({
   logger: true
 })
-const log = require('./logger')
+const log = require('../core/src/logger')
 
 fastify.get('/:type/*', (request, reply) => {
   log.debug(request.url)
@@ -17,7 +18,11 @@ fastify.get('/:type/*', (request, reply) => {
   log.debug("Transformed url is: " + url)
 
   reply.type("application/json")  // default to json
-  n2t.getPageContent(url)
+
+  puppeteer.launch({headless: true})
+    .then(browser => {
+      return n2t.getPageContent(url, browser)
+    })
     .then(response => {
       reply.code(200)
       if(type === 'text'){

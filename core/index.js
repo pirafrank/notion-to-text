@@ -1,10 +1,7 @@
 const html2text = require('html-to-text');
 const fx = require('./src/functions.js');
-const log = require('./src/logger.js');
 
 async function getPageContent(url, browser) {
-  log.info("URL is", url);
-
   const page = await browser.newPage();
 
   await page.setViewport({ width: 1920, height: 1080});

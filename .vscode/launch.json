@@ -22,15 +22,6 @@
     {
       "type": "pwa-node",
       "request": "launch",
-      "name": "Run AWS",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "program": "${workspaceFolder}/lambda/index.js"
-    },
-    {
-      "type": "pwa-node",
-      "request": "launch",
       "name": "Run CLI",
       "skipFiles": [
         "<node_internals>/**"
