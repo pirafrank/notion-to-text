@@ -10,6 +10,9 @@
     "type": "git",
     "url": "https://github.com/pirafrank/notion-to-text.git"
   },
+  "bin": {
+    "ntt": "./cli.js"
+  },
   "scripts": {
     "cli": "node ./cli",
     "server": "node ./server",

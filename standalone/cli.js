@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const n2t = require('notion-to-text-core')
 const fs = require('fs');
 const puppeteer = require('puppeteer');
