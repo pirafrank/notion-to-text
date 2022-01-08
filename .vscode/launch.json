@@ -22,14 +22,17 @@
     {
       "type": "pwa-node",
       "request": "launch",
-      "name": "Run CLI",
+      "name": "Run CLI (debug)",
       "skipFiles": [
         "<node_internals>/**"
       ],
       "program": "${workspaceFolder}/standalone/main.js",
       "args": [
         "https://pirafrank.notion.site"
-      ]
+      ],
+      "env": {
+        "DEBUG_ENABLED": "true"
+      }
     },
     {
       "type": "pwa-node",
@@ -46,14 +49,17 @@
     {
       "type": "pwa-node",
       "request": "launch",
-      "name": "Run Server",
+      "name": "Run Server (debug)",
       "skipFiles": [
         "<node_internals>/**"
       ],
       "program": "${workspaceFolder}/standalone/main.js",
       "args": [
         "serve"
-      ]
+      ],
+      "env": {
+        "DEBUG_ENABLED": "true"
+      }
     },
     {
       "type": "pwa-node",

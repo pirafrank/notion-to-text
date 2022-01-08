@@ -6,18 +6,21 @@ const fastify = require('fastify')({
 const fx = require('./functions')
 const log = require('./logger')
 
+
+const supportedTypes = ['text', 'raw', 'json'];
+
 const start = function(host, port){
 
   fastify.get('/:type/*', (request, reply) => {
     log.debug(request.url)
     const type = request.params.type
-    if(type !== 'text' && type !== 'json'){
+    if(!supportedTypes.includes(type)){
       reply.code(404)
       reply.send()
       return;
     }
 
-    let url = fx.normalizeURL(request.url.split('/').slice(2).join('/'))
+    let url = fx.normalizeURL(request.url)
     log.debug("Transformed url is: " + url)
 
     puppeteer.launch({headless: true})
@@ -26,7 +29,7 @@ const start = function(host, port){
       })
       .then(response => {
         reply.code(200)
-        if(type === 'text'){
+        if(type === 'text' || type === 'raw'){
           reply.type("text/plain")
           reply.send(response.text)
         } else {

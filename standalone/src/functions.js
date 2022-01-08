@@ -17,14 +17,14 @@ function writeToFile(filename, data){
 }
 
 /**
- * Normalize a *.notion.site URL
- * @param {string} url
+ * Get notion.site URL from server relative URL
+ * e.g. return https://some.notion.site/abc123 from /json/some.notion.site/abc123
+ * @param {string} url url path in input
  * @returns {string} the normalized URL
  */
  function normalizeURL(url){
-  if(url.includes('http'))
-    return "https://" + url.split('/').slice(3).join('/')
   if(url.includes('.notion.site')){
+    url = url.split('/').slice(2).join('/');
     if (url[0] === '/') url = url.substring(1)
     return "https://" + url
   }

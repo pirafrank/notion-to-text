@@ -14,9 +14,9 @@
     "ntt": "./main.js"
   },
   "scripts": {
-    "cli": "node ./cli",
-    "server": "node ./server",
-    "debug": "DEBUG_ENABLED=true node ./server",
+    "cli": "node ./main.js",
+    "server": "node ./main.js serve",
+    "debug": "DEBUG_ENABLED=true node ./main.js serve",
     "clean": "rm -rf node_modules"
   },
   "dependencies": {

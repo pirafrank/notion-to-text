@@ -12,7 +12,6 @@ async function fetchContent(url) {
 
 function run(url) {
   // normalize URL
-  url = fx.normalizeURL(url);
   fetchContent(url)
     .then(r => log.info(r.text)) // print to terminal
     .catch(e => log.error("Error", e))
