@@ -26,9 +26,21 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}/standalone/cli.js",
+      "program": "${workspaceFolder}/standalone/main.js",
       "args": [
         "https://pirafrank.notion.site"
+      ]
+    },
+    {
+      "type": "pwa-node",
+      "request": "launch",
+      "name": "Run CLI with bad URL",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/standalone/main.js",
+      "args": [
+        "https://some.badurl.site"
       ]
     },
     {
@@ -38,7 +50,33 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}/standalone/server.js"
+      "program": "${workspaceFolder}/standalone/main.js",
+      "args": [
+        "serve"
+      ]
+    },
+    {
+      "type": "pwa-node",
+      "request": "launch",
+      "name": "Run Server on port 3001",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/standalone/main.js",
+      "args": [
+        "serve",
+        "--port",
+        "3001"
+      ]
+    },
+    {
+      "type": "pwa-node",
+      "request": "launch",
+      "name": "Run core module in CLI",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/core/index.js"
     }
   ]
 }

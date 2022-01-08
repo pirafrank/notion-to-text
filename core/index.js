@@ -1,6 +1,13 @@
 const html2text = require('html-to-text');
 const fx = require('./src/functions.js');
 
+/**
+ * Get an object with content and title of given page
+ * at *.notion.site URL
+ * @param {string} url notion.site URL
+ * @param {Object} browser Puppeteer Browser object
+ * @returns {Object} { title: string, text: string }
+ */
 async function getPageContent(url, browser) {
   const page = await browser.newPage();
 
@@ -35,18 +42,35 @@ async function getPageContent(url, browser) {
   }
 }
 
-function transformUrl(url){
-  if(url.includes('http'))
-    return "https://" + url.split('/').slice(3).join('/')
-  if(url.includes('.notion.site')){
-    if (url[0] === '/') url = url.substring(1)
-    return "https://" + url
+const isValidHttpUrl = function(string) {
+  let url;
+  try {
+    url = new URL(string);
+  } catch (_) {
+    return false;
   }
-  // fallback
-  return url
+  return url.protocol === "http:" || url.protocol === "https:";
+}
+
+/**
+ * Check if a given URL is a valid one and belongs to notion.site
+ * @param {string} url string to check
+ * @returns
+ */
+function checkURL(url){
+  if(!url)
+    throw new Error("URL is null or undefined");
+  if(typeof url !== 'string')
+    throw new Error("URL is not a string object");
+  if(url.trim().length === 0)
+    throw new Error("URL is an empty string");
+  if(!isValidHttpUrl(url))
+    throw new Error("URL is not a valid one");
+  if(!url.includes('.notion.site'))
+    throw new Error("URL is not a *.notion.site one");
 }
 
 module.exports = {
   getPageContent: getPageContent,
-  transformUrl: transformUrl,
+  checkURL: checkURL,
 }
