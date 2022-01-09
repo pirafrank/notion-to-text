@@ -30,7 +30,13 @@ exports.handler =  function(event, context, callback) {
     || typeof event.pathParameters.op1 !== 'string'
     || event.pathParameters.length === 0
   ){
-    callback(null, 404);
+    callback(null, {
+      statusCode: 404,
+      headers: {
+        "content-type": "application/json"
+      },
+      body: null
+    });
   }
 
   // first path param is ok, need to understand if it's supported
@@ -45,7 +51,13 @@ exports.handler =  function(event, context, callback) {
     type = getSupportedType(firstParam);
   } else {
     // unknown, throw bad request
-    callback(null, 400);
+    callback(null, {
+      statusCode: 400,
+      headers: {
+        "content-type": "application/json"
+      },
+      body: null
+    });
   }
 
   // this is the full path of the request made to lambda endpoint,
@@ -59,7 +71,13 @@ exports.handler =  function(event, context, callback) {
     // check if this is a URL worth the effort
     n2t.checkURL(url);
   } catch (err) {
-    callback(null, 400);
+    callback(null, {
+      statusCode: 400,
+      headers: {
+        "content-type": "application/json"
+      },
+      body: null
+    });
   }
 
   run(url)
@@ -80,9 +98,15 @@ exports.handler =  function(event, context, callback) {
           headers: {
             "content-type": "application/json"
           },
-          body: r
+          body: JSON.stringify(r)
         })
       }
     })
-    .catch(e => callback(Error(e)))
+    .catch(e => callback({
+      statusCode: 500,
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(e)
+    }))
 }
