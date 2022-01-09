@@ -27,9 +27,9 @@ function writeToFile(filename, data){
     url = url.split('/').slice(2).join('/');
     if (url[0] === '/') url = url.substring(1)
     return "https://" + url
+  } else {
+    throw new Error("Cannot normalizeURL");
   }
-  // fallback
-  return url
 }
 
 module.exports = {

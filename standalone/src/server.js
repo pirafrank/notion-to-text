@@ -20,7 +20,16 @@ const start = function(host, port){
       return;
     }
 
-    let url = fx.normalizeURL(request.url)
+    let url;
+    try{
+      url = fx.normalizeURL(request.url);
+      n2t.checkURL(url);
+    } catch (err) {
+      reply.type("application/json");
+      reply.send({ error: err.message });
+      return;
+    }
+
     log.debug("Transformed url is: " + url)
 
     puppeteer.launch({headless: true})
