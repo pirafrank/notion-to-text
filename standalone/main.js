@@ -78,6 +78,8 @@ const argv = yargs(hideBin(process.argv))
   .example('$0 serve --host "192.168.0.123"', 'start the server and bind to given host')
   .nargs('get', 1)
   .demandCommand(1, "You need to provide one command at least.")
+  .scriptName('ntt')
+  .usage('\nntt <command> [<args>]')
   .help()
   .argv
 
