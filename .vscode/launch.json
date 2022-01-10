@@ -28,6 +28,7 @@
       ],
       "program": "${workspaceFolder}/standalone/main.js",
       "args": [
+        "get",
         "https://pirafrank.notion.site"
       ],
       "env": {
@@ -43,6 +44,7 @@
       ],
       "program": "${workspaceFolder}/standalone/main.js",
       "args": [
+        "get",
         "https://some.badurl.site"
       ]
     },

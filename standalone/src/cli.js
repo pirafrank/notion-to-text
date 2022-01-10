@@ -1,7 +1,6 @@
 const n2t = require('notion-to-text-core')
 const puppeteer = require('puppeteer');
 const log = require('./logger.js')
-const fx = require('./functions')
 
 async function fetchContent(url) {
   const browser = await puppeteer.launch({headless: true});

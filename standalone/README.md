@@ -2,6 +2,34 @@
 
 Standalone version can be executed as CLI program or as server.
 
+## Install
+
+```sh
+npm i -g notion-to-text
+```
+
+## Usage
+
+```text
+ntt <command>
+
+Commands:
+  ntt get <URL>  Get content from URL and print to stdout       [aliases: g]
+  ntt serve      start the server                               [aliases: s]
+
+Options:
+  --version  Show version number                                       [boolean]
+  --help     Show help                                                 [boolean]
+
+Examples:
+  ntt get <URL>                     get content from notion.site URL
+  ntt serve                         start the server on 0.0.0.0:3000
+  ntt serve --port 3001             start the server on port 3001
+  ntt serve --host "192.168.0.123"  start the server and bind to given host
+
+You need to provide one command at least.
+```
+
 ## Command-line
 
 ```sh

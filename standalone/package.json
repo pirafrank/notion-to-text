@@ -10,12 +10,18 @@
     "type": "git",
     "url": "https://github.com/pirafrank/notion-to-text.git"
   },
-  "keywords": ["notion","client","server","cli","tool"],
+  "keywords": [
+    "notion",
+    "client",
+    "server",
+    "cli",
+    "tool"
+  ],
   "bin": {
     "ntt": "main.js"
   },
   "scripts": {
-    "cli": "node ./main.js",
+    "cli": "node ./main.js get",
     "server": "node ./main.js serve",
     "start": "npm run server",
     "debug": "DEBUG_ENABLED=true node ./main.js serve",
