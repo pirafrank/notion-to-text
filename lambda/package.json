@@ -1,7 +1,7 @@
 {
   "name": "notion-to-text-lambda",
   "description": "Lambda function to get content of publicly shared notion .site pages",
-  "version": "0.1.0",
+  "version": "0.1.3",
   "private": false,
   "author": "pirafrank",
   "url": "https://fpira.com/",
