@@ -24,7 +24,7 @@
   "dependencies": {
     "fastify": "^3.24.0",
     "puppeteer": "^12.0.1",
-    "notion-to-text-core": "^0.1.0",
+    "notion-to-text-core": "^0.1.1",
     "yargs": "^17.3.1"
   }
 }
