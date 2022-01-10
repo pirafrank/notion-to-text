@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 const n2t = require('notion-to-text-core')
 const puppeteer = require('puppeteer');
 const log = require('./logger.js')
