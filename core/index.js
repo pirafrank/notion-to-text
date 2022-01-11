@@ -70,6 +70,22 @@ function checkURL(url){
     throw new Error("URL is not a *.notion.site one");
 }
 
+// debug only code --start
+if(require.main === module && process.env.DEBUG_ENABLED){
+  const puppeteer = require('puppeteer');
+  puppeteer.launch({headless: true})
+    .then(browser => {
+      return getPageContent("https://pirafrank.notion.site", browser)
+    })
+    .then(response => {
+      console.log(JSON.stringify(response));
+    })
+    .catch(e => {
+      console.error("Error", e.message)
+    })
+}
+// end
+
 module.exports = {
   getPageContent: getPageContent,
   checkURL: checkURL,
