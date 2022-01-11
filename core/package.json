@@ -1,7 +1,7 @@
 {
   "name": "notion-to-text-core",
   "description": "Core library for notion-to-text",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
   "author": "pirafrank",
   "url": "https://fpira.com/",
