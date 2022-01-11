@@ -1,39 +1,28 @@
+const log = require('loglevel');
+const { formatDate } = require('./utils');
 
-function pad(num, padding) {
-  return (String("0".repeat(padding) + num).slice(-padding));
-}
+const swapKeyValues = (obj) => Object.fromEntries(Object.entries(obj).map(([k, v]) => [v, k]))
 
-function formatDate(d) {
-  return (
-    d.getFullYear() + '-' +
-    pad(d.getMonth() + 1, 2) + '-' +
-    pad(d.getDate(), 2) + ' ' +
-    pad(d.getHours(), 2) + ':' +
-    pad(d.getMinutes(), 2) + ':' +
-    pad(d.getSeconds(), 2) + '.' +
-    pad(d.getMilliseconds(), 3)
-  )
-}
-function info(...args){
-  console.log("INFO " + formatDate(new Date()) + ' ', ...args);
-}
+const logLevelsMap = (swapKeyValues(log.levels));
 
-function debug(...args){
-  if(process.env.DEBUG_ENABLED)
-    console.log("DEBUG " + formatDate(new Date()) + ' ', ...args);
-}
+// configure logger
+const originalFactory = log.methodFactory;
+log.methodFactory = function (methodName, logLevel, loggerName) {
+  const rawMethod = originalFactory(methodName, logLevel, loggerName);
+  return function (message) {
+    rawMethod(logLevelsMap[logLevel] + " " + formatDate(new Date()) + " " + message);
+  };
+};
 
-function error(...args){
-  console.error("INFO " + formatDate(new Date()) + ' ', ...args);
-}
+// set default log level
+if(process.env.DEBUG_ENABLED)
+  log.setLevel('debug');
+else
+  log.setLevel('info');
 
-function warn(...args){
-  console.warn("INFO " + formatDate(new Date()) + ' ', ...args);
-}
+log.warn("aaaaaaaaaa")
 
 module.exports = {
-  info: info,
-  error: error,
-  warn: warn,
-  debug: debug,
+  log: log,
+  logLevelsMap: logLevelsMap,
 }

@@ -6,7 +6,7 @@ const n2t = require('notion-to-text-core');
 const server = require('./src/server');
 const cli = require('./src/cli');
 const defaults = require('./defaults');
-const log = require('./src/logger')
+const { log } = require('./src/logger')
 
 // parse input args
 const argv = yargs(hideBin(process.argv))
@@ -19,12 +19,16 @@ const argv = yargs(hideBin(process.argv))
       throw new Error(`ERROR: '${params[0]}' command is not supported.\n`);
     }
   })
+  .option("d")
+  .alias("d", "debug")
+  .hide("d")
   .command({
     command: 'get <URL>',
     aliases: ['g'],
     desc: 'Get content from URL and print to stdout',
     builder: {},
     handler: (agv) => {
+      if(agv.debug) log.setLevel('debug');
       log.debug(`'get' handler, URL is ${agv.URL}`)
       // CLI mode, get content from user given URL
       try {
@@ -64,6 +68,7 @@ const argv = yargs(hideBin(process.argv))
     },
     // handler function to run
     handler: (agv) => {
+      if(agv.debug) log.setLevel('debug');
       log.debug(`'serve' handler, HOST: ${agv.host}, PORT: ${agv.port}`)
       // start the server
       let serverHost = agv.host ? agv.host : defaults.host
