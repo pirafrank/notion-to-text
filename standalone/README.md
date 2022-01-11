@@ -21,11 +21,11 @@ npm link
 ## Usage
 
 ```text
-ntt <command>
+ntt <command> [<args>]
 
 Commands:
-  ntt get <URL>  Get content from URL and print to stdout       [aliases: g]
-  ntt serve      start the server                               [aliases: s]
+  ntt get <URL>  Get content from URL and print to stdout           [aliases: g]
+  ntt serve      start the server                                   [aliases: s]
 
 Options:
   --version  Show version number                                       [boolean]
@@ -38,6 +38,29 @@ Examples:
   ntt serve --host "192.168.0.123"  start the server and bind to given host
 
 You need to provide one command at least.
+```
+
+```text
+ntt get <URL>
+
+Get content from URL and print to stdout
+
+Options:
+      --version  Show version number                                   [boolean]
+      --help     Show help                                             [boolean]
+  -j, --json     print output in JSON format                           [boolean]
+```
+
+```text
+ntt serve
+
+start the server
+
+Options:
+  --version  Show version number                                       [boolean]
+  --help     Show help                                                 [boolean]
+  --port     port the server listens on                 [number] [default: 3000]
+  --host     address the server binds to           [string] [default: "0.0.0.0"]
 ```
 
 ## APIs
