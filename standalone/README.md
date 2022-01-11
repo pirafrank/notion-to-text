@@ -1,11 +1,21 @@
-# notion-to-text standalone
+# notion-to-text
 
-Standalone version can be executed as CLI program or as server.
+CLI program which outputs to stdout. It also supports running as server.
 
 ## Install
 
+using npm
+
 ```sh
 npm i -g notion-to-text
+```
+
+or from sources
+
+```sh
+git clone https://github.com/pirafrank/notion-to-text
+cd notion-to-text/standalone
+npm link
 ```
 
 ## Usage
@@ -30,14 +40,36 @@ Examples:
 You need to provide one command at least.
 ```
 
-## Command-line
+## APIs
+
+Just call server APIs by adding your hostname at the beginning + the response type you want to get.
+
+These are available:
+
+- `text` or `raw` for a `text/plain` response,
+
+- `json` for a JSON one.
+
+For example:
+
+Notion page URL|Method|Endpoint|Response type
+---|---|---|---
+`https://pirafrank.notion.site`|`GET`|`http://localhost:3000/json/pirafrank.notion.site`|application/json
+`https://pirafrank.notion.site/My-toolbelt-c3e17a2462d64b549e3ec7009e6f3071`|`GET`|`http://localhost:3000/text/pirafrank.notion.site/My-toolbelt-c3e17a2462d64b549e3ec7009e6f3071`|text/plain
+
+In case of error, you'll always get an `application/json` response.
+
+## package.json scripts
+
+### Command-line
 
 ```sh
 # npm run cli [a *.notion.site url]
+# e.g.
 npm run cli "https://pirafrank.notion.site"
 ```
 
-## Server
+### Server
 
 Start the server
 
@@ -45,13 +77,16 @@ Start the server
 npm run server
 ```
 
-then make a GET call adding your hostname at the beginning. Two first level paths are available: `text` for `text/plain` response, `json` for a JSON one.
+## Development
 
-For example:
+`.vscode` folder in the repository root holds config to run/debug each module (core, standalone and lambda).
 
-Notion page URL|API call|Response type
----|---|---
-`https://pirafrank.notion.site`|`http://localhost:3000/json/pirafrank.notion.site`|application/json
-`https://pirafrank.notion.site/My-toolbelt-c3e17a2462d64b549e3ec7009e6f3071`|`http://localhost:3000/text/pirafrank.notion.site/My-toolbelt-c3e17a2462d64b549e3ec7009e6f3071`|text/plain
+## Why
 
-In case of error, you'll always get an `application/json` response.
+Notion is a great note-taking tool and with sites an easy way to maintain a public page. Unfortunately being a PWA you can't get page content just by using curl, so that's where notion-to-text can help.
+
+I've created it for personal use and as such it is provided as-is with no warranties.
+
+## License
+
+MIT

@@ -1,4 +1,4 @@
-# notion-to-text
+# notion-to-text as lambda
 
 ## First deploy
 
@@ -32,3 +32,7 @@ aws lambda update-function-code \
 --s3-key 'function.zip' \
 --publish
 ```
+
+## License
+
+MIT

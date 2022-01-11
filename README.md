@@ -4,10 +4,16 @@ A simple way to get content of notion.site pages in plain text (e.g. for use wit
 
 It runs:
 
-- in standalone, to be executed as CLI program or as server.
+- in standalone, as CLI program that outputs to stdout or runs a server,
 - as lambda function (AWS)
 
-For futher details, please check the readme files in `standalone` and `lambda` dirs.
+`core` module is a tiny package providing common functionality needed by standalone and lambda.
+
+For futher details, please check the readme files per each module:
+
+- [standalone](standalone/README.md)
+- [lambda](lambda/README.md)
+- [core](core/README.md)
 
 ## Why
 
