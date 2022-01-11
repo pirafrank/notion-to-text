@@ -14,12 +14,22 @@ async function getPageContent(url, browser) {
   await page.setViewport({ width: 1920, height: 1080});
   await page.goto(url, { waitUntil: 'networkidle0', timeout: 15000 });
 
-  const title = await page.evaluate(() => document.title)
-
   await page.waitForSelector('.notion-page-content', { timeout: 1000 });
 
+  // use page.evaluate to execute JavaScript on the page
   const pageContent = await page.evaluate(() => {
     return document.querySelector('.notion-page-content').innerHTML;
+  });
+
+  const title = await page.evaluate(() => {
+    let titleParents = document.getElementsByClassName('notion-selectable notion-page-block');
+    if(titleParents.length > 0){
+      let firstChild = titleParents[0];
+      let contents = firstChild.getElementsByTagName('div');
+      if(contents.length > 0){
+        return contents[0].innerText;
+      }
+    }
   });
 
   // covert downloaded html to text
