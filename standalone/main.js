@@ -23,7 +23,13 @@ const argv = yargs(hideBin(process.argv))
     command: 'get <URL>',
     aliases: ['g'],
     desc: 'Get content from URL and print to stdout',
-    builder: {},
+    builder: (y) => y
+    .option('json', {
+      desc: 'print output in JSON format',
+      type: 'boolean',
+      alias: 'j',
+      boolean: true,
+    }),
     handler: (agv) => {
       log.debug(`'get' handler, URL is ${agv.URL}`)
       // CLI mode, get content from user given URL
@@ -37,7 +43,15 @@ const argv = yargs(hideBin(process.argv))
       // try parsing the content
       try {
         log.debug("Parse the content for URL", agv.URL)
-        cli.run(agv.URL);
+        cli.run(agv.URL)
+        .then(r => {
+          if(agv.json){
+            console.log(JSON.stringify(r)); // get whole object
+          } else {
+            console.log(r.text); // print text only
+          }
+        })
+        .catch(e => log.error(e.message));
       } catch (err) {
         log.error(err.message);
         process.exit(1); // fetchContent error

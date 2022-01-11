@@ -1,6 +1,5 @@
 const n2t = require('notion-to-text-core')
 const puppeteer = require('puppeteer');
-const log = require('./logger.js')
 
 async function fetchContent(url) {
   const browser = await puppeteer.launch({headless: true});
@@ -9,9 +8,10 @@ async function fetchContent(url) {
 
 function run(url) {
   // normalize URL
-  fetchContent(url)
-    .then(r => log.info(r.text)) // print to terminal
-    .catch(e => log.error("Error", e))
+  return fetchContent(url)
+    // return whole object
+    .then(r => r)
+    .catch(e => ({ "error": e.message }))
 }
 
 module.exports = {
