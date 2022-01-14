@@ -40,17 +40,18 @@ exports.handler =  function(event, context, callback) {
   }
 
   // first path param is ok, need to understand if it's supported
-  // or if it's implicit, or throw bad request
+  // or if it's implicit, otherwise throw bad request
   let firstParam = event.pathParameters.op1.toLowerCase();
   let type = getSupportedType(firstParam);
   if(isNotionSite(firstParam)){
-    // if type is not specified default to text/plain response
+    // if first param is notion.site url
+    // type is not specified, default to text/plain response
     type = 'text';
   } else if(type){
     // response will have the choosen type
     type = getSupportedType(firstParam);
   } else {
-    // unknown, throw bad request
+    // unknown type, throw bad request
     callback(null, {
       statusCode: 400,
       headers: {

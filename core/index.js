@@ -5,7 +5,7 @@ const fx = require('./src/functions.js');
  * Get an object with content and title of given page
  * at *.notion.site URL
  * @param {string} url notion.site URL
- * @param {Object} browser Puppeteer Browser object
+ * @param {Object} browser Puppeteer/chrome-aws-lambda Browser object
  * @returns {Object} { title: string, text: string }
  */
 async function getPageContent(url, browser) {
