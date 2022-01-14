@@ -8,7 +8,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pirafrank/notion-to-text.git"
+    "url": "git+https://github.com/pirafrank/notion-to-text.git"
   },
   "scripts": {
     "clean": "rm -rf node_modules"
@@ -16,5 +16,9 @@
   "dependencies": {
     "he": "^1.2.0",
     "html-to-text": "^8.1.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/pirafrank/notion-to-text/issues?q=label%3A%22core%22"
+  },
+  "homepage": "https://github.com/pirafrank/notion-to-text/tree/main/core#readme"
 }

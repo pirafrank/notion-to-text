@@ -8,7 +8,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pirafrank/notion-to-text.git"
+    "url": "git+https://github.com/pirafrank/notion-to-text.git"
   },
   "keywords": [
     "notion",
@@ -34,5 +34,10 @@
     "puppeteer": "^12.0.1",
     "notion-to-text-core": "^0.1.2",
     "yargs": "^17.3.1"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/pirafrank/notion-to-text/issues?q=label%3A%22standalone%22"
+  },
+  "homepage": "https://github.com/pirafrank/notion-to-text/tree/main/standalone#readme"
+
 }
