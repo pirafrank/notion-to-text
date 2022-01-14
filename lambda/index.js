@@ -93,7 +93,7 @@ exports.handler =  function(event, context, callback) {
           headers: {
             "content-type": "text/plain"
           },
-          body: r.text
+          body: r.title + '\n\n' + r.text
         })
       } else {
         // json response

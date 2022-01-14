@@ -40,7 +40,7 @@ const start = function(host, port){
         reply.code(200)
         if(type === 'text' || type === 'raw'){
           reply.type("text/plain")
-          reply.send(response.text)
+          reply.send(response.title + '\n\n' + response.text)
         } else {
           reply.type("application/json")
           reply.send(response)
