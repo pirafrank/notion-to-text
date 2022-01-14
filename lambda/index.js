@@ -31,13 +31,17 @@ exports.handler =  function(event, context, callback) {
     || event.pathParameters.length === 0
   ){
     callback(null, {
-      statusCode: 404,
+      statusCode: 307,
       headers: {
-        "content-type": "application/json"
+        "Location": "https://github.com/pirafrank/notion-to-text"
       },
       body: null
     });
   }
+
+  // this is the full path of the request made to lambda endpoint,
+  // hostname is not included.
+  let url = event.rawPath;
 
   // first path param is ok, need to understand if it's supported
   // or if it's implicit, otherwise throw bad request
@@ -50,6 +54,8 @@ exports.handler =  function(event, context, callback) {
   } else if(type){
     // response will have the choosen type
     type = getSupportedType(firstParam);
+    // remove type from rawPath
+    url = url.replace("/"+firstParam,"")
   } else {
     // unknown type, throw bad request
     callback(null, {
@@ -61,13 +67,10 @@ exports.handler =  function(event, context, callback) {
     });
   }
 
-  // this is the full path of the request made to lambda endpoint,
-  // hostname is not included.
-  let url = event.rawPath;
   // generate notion.site URL
   if (url[0] === '/') url = url.substring(1)
   url = "https://" + url
-  
+
   try {
     // check if this is a URL worth the effort
     n2t.checkURL(url);

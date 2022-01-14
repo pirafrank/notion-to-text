@@ -12,7 +12,9 @@
   },
   "scripts": {
     "clean": "rm -rf node_modules",
-    "pack": "rm -f function.zip; zip -r function.zip . ; ls -lah function.zip"
+    "pack": "rm -f function.zip; zip -r function.zip . ; printf '\n\n'; ls -lah function.zip",
+    "push": "printf '\n\n'; bash upload.sh",
+    "pap": "npm run pack; npm run push"
   },
   "dependencies": {
     "chrome-aws-lambda": "^10.1.0",
