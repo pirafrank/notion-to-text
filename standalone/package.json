@@ -1,7 +1,7 @@
 {
   "name": "notion-to-text",
   "description": "A tool to get content of publicly shared notion .site pages",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": false,
   "author": "pirafrank",
   "url": "https://fpira.com/",
@@ -32,12 +32,11 @@
   "dependencies": {
     "fastify": "^3.24.0",
     "puppeteer": "^12.0.1",
-    "notion-to-text-core": "^0.1.2",
+    "notion-to-text-core": "^0.1.4",
     "yargs": "^17.3.1"
   },
   "bugs": {
     "url": "https://github.com/pirafrank/notion-to-text/issues?q=label%3A%22standalone%22"
   },
   "homepage": "https://github.com/pirafrank/notion-to-text/tree/main/standalone#readme"
-
 }
