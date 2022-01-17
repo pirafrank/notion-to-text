@@ -1,19 +1,13 @@
 # notion-to-text
 
-A simple way to get content of notion.site pages in plain text (e.g. for use with `curl`, etc.).
+A simple way to get content of notion.site pages in plain text (e.g. for use with `curl`, etc.). Powered by [Puppeteer](https://github.com/puppeteer/puppeteer) and [html-to-text](https://www.npmjs.com/package/html-to-text).
 
-It runs:
+Provided as:
 
-- in standalone, as CLI program that outputs to stdout or runs a server,
-- as lambda function (AWS)
+- [standalone](standalone/README.md), a CLI program that outputs to stdout or runs a server
+- [lambda](lambda/README.md) function
 
 `core` module is a tiny package providing common functionality needed by standalone and lambda.
-
-For futher details, please check the readme files per each module:
-
-- [standalone](standalone/README.md)
-- [lambda](lambda/README.md)
-- [core](core/README.md)
 
 ## Why
 

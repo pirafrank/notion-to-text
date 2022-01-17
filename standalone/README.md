@@ -71,7 +71,7 @@ These are available:
 
 - `text` or `raw` for a `text/plain` response,
 
-- `json` for a JSON one.
+- `json` for an `application/json` one.
 
 For example:
 

@@ -1,5 +1,38 @@
 # notion-to-text as lambda
 
+Serveless version compatible with AWS Lambda. Currently hosted on my AWS at `ntt.fpira.com`.
+
+This version uses `chrome-aws-lambda` in place of `puppeteer` to reduce the size of zip package to deploy.
+
+## Known limits
+
+As a beta side-project some rough edges still exist.
+
+- ~15 secs response time, this is because a new puppeteer-core instance is loaded per each invocation
+- some invocations may lead to internal server errors
+
+## Usage
+
+Just prepend `ntt.fpira.com/` in front of a notion.site URL, e.g.
+
+`https://pirafrank.notion.site/My-toolbelt-c3e17a2462d64b549e3ec7009e6f3071` -> `http://ntt.fpira.com/pirafrank.notion.site/My-toolbelt-c3e17a2462d64b549e3ec7009e6f3071`
+
+and you'll get a `text/plain` response with page title and content.
+
+## Available endpoints
+
+Lambda and standalone server share same API format.
+
+Notion page URL|Method|Endpoint|Response type
+---|---|---|---
+`https://pirafrank.notion.site`|`GET`|`https://ntt.fpira.com/json/pirafrank.notion.site`|application/json
+`https://pirafrank.notion.site`|`GET`|`http://ntt.fpira.com/raw/pirafrank.notion.site`|text/plain
+`https://pirafrank.notion.site`|`GET`|`http://ntt.fpira.com/text/pirafrank.notion.site`|text/plain
+
+To get `text/plain` responses you may omit the `/text` path.
+
+In case of error, you'll always get an `application/json` response.
+
 ## First deploy
 
 ```sh
