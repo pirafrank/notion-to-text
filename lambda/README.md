@@ -51,7 +51,7 @@ aws lambda create-function \
 aws lambda update-function-configuration \
 --function-name notion-to-text \
 --timeout 30 \
---memory-size 1024
+--memory-size 1536
 ```
 
 ## Update function code
