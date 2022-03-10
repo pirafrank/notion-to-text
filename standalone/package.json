@@ -30,7 +30,7 @@
     "clean": "rm -rf node_modules"
   },
   "dependencies": {
-    "fastify": "^3.24.0",
+    "fastify": "^3.27.1",
     "puppeteer": "^12.0.1",
     "notion-to-text-core": "^0.1.4",
     "yargs": "^17.3.1"
