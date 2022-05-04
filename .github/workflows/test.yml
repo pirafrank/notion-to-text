@@ -1,0 +1,48 @@
+
+name: "Test Build"
+
+on:
+  # Note that GITHUB_SHA for this event is the last merge commit of the pull
+  # request merge branch. If you want to get the commit ID for the last commit
+  # to the head branch of the pull request,
+  # use github.event.pull_request.head.sha instead.
+  # Docs: https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - 'dependabot/**'
+      - 'snyk-*'
+
+jobs:
+  testbuild:
+    name: Test Build
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    - name: Update npm version
+      shell: bash
+      run: |
+        npm install -g npm
+    - name: Build of core
+      shell: bash
+      run: |
+        cd core
+        npm i --production
+    - name: Build of lambda
+      shell: bash
+      run: |
+        cd lambda
+        # use local version of core module
+        npm install --save ../core
+        npm i --production
+    - name: Build of standalone
+      shell: bash
+      run: |
+        cd standalone
+        # use local version of core module
+        npm install --save ../core
+        npm i --production
