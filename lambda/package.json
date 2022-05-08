@@ -18,8 +18,8 @@
   },
   "dependencies": {
     "chrome-aws-lambda": "^10.1.0",
-    "puppeteer-core": "^10.0.1",
-    "notion-to-text-core": "^0.1.4"
+    "notion-to-text-core": "^0.1.5",
+    "puppeteer-core": "^10.0.1"
   },
   "devDependencies": {
     "puppeteer": "^12.0.1"
