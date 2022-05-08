@@ -30,18 +30,18 @@ jobs:
       shell: bash
       run: |
         cd core
-        npm i --production
+        npm i --omit=dev
     - name: Build of lambda
       shell: bash
       run: |
         cd lambda
         # use local version of core module
         npm install --save ../core
-        npm i --production
+        npm i --omit=dev
     - name: Build of standalone
       shell: bash
       run: |
         cd standalone
         # use local version of core module
         npm install --save ../core
-        npm i --production
+        npm i --omit=dev
