@@ -12,18 +12,21 @@ case "$1" in
     cd standalone
     npm version ${VERSION}
     npm i --package-lock-only
+    cd -
     ;;
   lambda)
     echo "bumping lambda version"
     cd lambda
     npm version ${VERSION}
     npm i --package-lock-only
+    cd -
     ;;
   core)
     echo "bumping core version"
     cd core
     npm version ${VERSION}
     npm i --package-lock-only
+    cd -
     ;;
   *)
     echo "unknown option"
