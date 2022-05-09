@@ -33,7 +33,7 @@
     "fastify": "^3.27.1",
     "notion-to-text-core": "^0.1.5",
     "puppeteer": "^12.0.1",
-    "yargs": "^17.4.0"
+    "yargs": "^17.4.1"
   },
   "bugs": {
     "url": "https://github.com/pirafrank/notion-to-text/issues?q=label%3A%22standalone%22"
