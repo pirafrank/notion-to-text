@@ -30,25 +30,26 @@ jobs:
         npm install -g npm
     - name: Build of core
       shell: bash
+      working-directory: ./core
       run: |
-        cd core
         npm i --omit=dev
     - name: Build of lambda
       shell: bash
+      working-directory: ./lambda
       run: |
-        cd lambda
         # use local version of core module
         npm install --save ../core
         npm i --omit=dev
     - name: Build of standalone
       shell: bash
+      working-directory: ./standalone
       run: |
-        cd standalone
         # use local version of core module
         npm install --save ../core
         npm i --omit=dev
     - name: Test standalone module
       shell: bash
+      working-directory: ./standalone
       run: |
         node ./main.js get "https://pirafrank.notion.site/notion-to-text-test-page-35af4e683d134e21a829646dec3706ad" \
           | grep -i "if you can parse this content it works"
