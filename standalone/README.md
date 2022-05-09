@@ -104,6 +104,14 @@ npm run server
 
 `.vscode` folder in the repository root holds config to run/debug each module (core, standalone and lambda).
 
+### Use the local `core` module
+
+Helpful for debug and testing before `core` module publication.
+
+```sh
+npm install --save ../core
+```
+
 ## Why
 
 Notion is a great note-taking tool and with sites an easy way to maintain a public page. Unfortunately being a PWA you can't get page content just by using curl, so that's where notion-to-text can help.
