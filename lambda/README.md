@@ -36,6 +36,8 @@ In case of error, you'll always get an `application/json` response.
 ## First deploy
 
 ```sh
+# same as --omit=dev
+# Docs: https://docs.npmjs.com/cli/v8/using-npm/config#only
 npm i --only=production
 
 zip -r function.zip .

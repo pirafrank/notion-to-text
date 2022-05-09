@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# note: The --package-lock-only argument will only update the package-lock.json,
+# instead of checking node_modules and downloading dependencies.
+# Docs: https://docs.npmjs.com/cli/v8/commands/npm-install
+
 VERSION="$2"
 # if unset, default to 'patch'
 if [ -z "${VERSION}" ]; then

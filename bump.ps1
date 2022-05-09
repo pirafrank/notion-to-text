@@ -1,4 +1,8 @@
 
+# note: The --package-lock-only argument will only update the package-lock.json,
+# instead of checking node_modules and downloading dependencies.
+# Docs: https://docs.npmjs.com/cli/v8/commands/npm-install
+
 $option=$args[0]
 $version=$args[1]
 
