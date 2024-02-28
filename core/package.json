@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "he": "^1.2.0",
-    "html-to-text": "^8.2.0"
+    "html-to-text": "^9.0.0"
   },
   "bugs": {
     "url": "https://github.com/pirafrank/notion-to-text/issues?q=label%3A%22core%22"
